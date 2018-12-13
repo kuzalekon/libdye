@@ -10,6 +10,11 @@
 #endif
 
 #ifdef DYE_WIN32
+#define WIN32_LEAN_AND_MEAN 1
+#include <io.h>
+#include <windows.h>
+#define STDOUT_FILENO 1
+#define STDERR_FILENO 2
 // DYE_WIN32
 #elif defined DYE_POSIX
 #include <stdio.h>
@@ -21,7 +26,65 @@
 bool dye(dye_tty_t tty, dye_color_t fg, dye_color_t bg)
 {
 #if defined DYE_WIN32
-  return false;
+  static WORD stdout_attrs = 0;
+  static WORD stderr_attrs = 0;
+
+  if (!_isatty(_fileno(tty)))
+    return false;
+
+  HANDLE tty_handle = (HANDLE) _get_osfhandle(_fileno(tty));
+  CONSOLE_SCREEN_BUFFER_INFO tty_info = { 0 };
+
+  if (!GetConsoleScreenBufferInfo(tty_handle, &tty_info))
+    return false;
+
+  WORD tty_attrs = tty_info.wAttributes;
+
+  switch (_fileno(tty))
+  {
+    case STDOUT_FILENO:
+    {
+      if (!stdout_attrs)
+        stdout_attrs = tty_attrs;
+
+      if (fg != DYE_CURRENT)
+      {
+        tty_attrs &= ~(tty_attrs & 0x0F);
+        tty_attrs |= (WORD) (fg == DYE_RESET ? stdout_attrs & 0x0F : fg);
+      }
+
+      if (bg != DYE_CURRENT)
+      {
+        tty_attrs &= ~(tty_attrs & 0xF0);
+        tty_attrs |= (WORD) (bg == DYE_RESET ? stdout_attrs & 0xF0 : bg << 4);
+      }
+
+      break;
+    }
+    case STDERR_FILENO:
+    {
+      if (!stderr_attrs)
+        stderr_attrs = tty_attrs;
+
+      if (fg != DYE_CURRENT)
+      {
+        tty_attrs &= ~(tty_attrs & 0x0F);
+        tty_attrs |= (WORD) (fg == DYE_RESET ? stderr_attrs & 0x0F : fg);
+      }
+
+      if (bg != DYE_CURRENT)
+      {
+        tty_attrs &= ~(tty_attrs & 0xF0);
+        tty_attrs |= (WORD) (bg == DYE_RESET ? stderr_attrs & 0xF0 : bg << 4);
+      }
+
+      break;
+    }
+    default:
+      return false;
+  }
+
+  return (bool) SetConsoleTextAttribute(tty_handle, tty_attrs);
 // DYE_WIN32
 #elif defined DYE_POSIX
   static dye_color_t stdout_fg = DYE_RESET;
