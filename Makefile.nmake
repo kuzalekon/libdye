@@ -1,0 +1,40 @@
+
+TARGET = dye
+
+SRCDIR = ./src
+OUTDIR = ./out
+
+SRC = $(SRCDIR)/dye.c
+OBJ = $(OUTDIR)/dye.o
+LIB = $(OUTDIR)/dye.lib
+
+CC = cl.exe
+# Default compile flags
+CFLAGS = /nologo /utf-8 /W4 /EHsc /c /Fo$(OBJ)
+# Default compile macroses
+DFLAGS = /DNDEBUG
+
+AR = lib.exe
+ARFLAGS = /nologo
+
+RM = -del
+RMFLAGS =
+
+MD = -mkdir
+MDFLAGS =
+
+.PHONY: all
+all: build
+
+.PHONY: build
+build:
+	$(MD) $(MDFLAGS) "$(OUTDIR)" 1>nul 2>nul
+	$(CC) $(CFLAGS) $(DFLAGS) $(SRC)
+	$(AR) $(ARFLAGS) $(OBJ)
+
+.PHONY: rebuild
+rebuild: clean build
+
+.PHONY: clean
+clean:
+	$(RM) $(RMFLAGS) "$(OBJ)"
