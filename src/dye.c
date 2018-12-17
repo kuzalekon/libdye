@@ -153,3 +153,6 @@ bool dye(dye_tty_t tty, dye_color_t fg, dye_color_t bg)
   return fprintf(tty, "\x1B[0;%u;%um", ansi_fg_color[_fg + 1], ansi_bg_color[_bg + 1]) > 0;
 #endif // DYE_POSIX
 }
+
+#undef DYE_WIN32
+#undef DYE_POSIX
