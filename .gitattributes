@@ -45,6 +45,7 @@
 
 # Makefiles
 Makefile* text
+*.nmake   text eol=crlf
 
 # Windows Scripts
 *.bat text eol=crlf
