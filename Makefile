@@ -9,7 +9,7 @@ OBJ := $(OUTDIR)/dye.o
 
 CC ?= gcc
 # Default compile flags
-CFLAGS ?= -Wall -Wextra -O3 -static -c -o $(OBJ)
+CFLAGS ?= -Wall -Wextra -O3 -static -std=gnu99 -c -o $(OBJ)
 # Default compile macroses
 DFLAGS ?= -DNDEBUG
 
