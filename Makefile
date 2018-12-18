@@ -6,6 +6,7 @@ OUTDIR := ./out
 
 SRC := $(SRCDIR)/dye.c
 OBJ := $(OUTDIR)/dye.o
+LIB := $(OUTDIR)/lib$(TARGET).a
 
 CC ?= gcc
 # Default compile flags
@@ -26,12 +27,10 @@ MDFLAGS := -p
 all: build clean
 
 .PHONY: build
-build: override TARGET := ${addprefix lib, $(TARGET)}
-build: override TARGET := ${addsuffix .a, $(TARGET)}
 build:
 	$(MD) $(MDFLAGS) $(OUTDIR)
 	$(CC) $(CFLAGS) $(DFLAGS) $(SRC)
-	$(AR) $(ARFLAGS) $(OUTDIR)/$(TARGET) $(OBJ)
+	$(AR) $(ARFLAGS) $(LIB) $(OBJ)
 
 .PHONY: rebuild
 rebuild: clean build
