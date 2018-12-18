@@ -133,24 +133,21 @@ bool dye(dye_tty_t tty, dye_color_t fg, dye_color_t bg)
   if (!is_ansi_term)
     return false;
 
-  dye_color_t _fg = DYE_RESET;
-  dye_color_t _bg = DYE_RESET;
-
   switch (fileno(tty))
   {
     case STDOUT_FILENO:
-      stdout_fg = _fg = fg == DYE_CURRENT ? stdout_fg : fg;
-      stdout_bg = _bg = bg == DYE_CURRENT ? stdout_bg : bg;
+      stdout_fg = fg = fg == DYE_CURRENT ? stdout_fg : fg;
+      stdout_bg = bg = bg == DYE_CURRENT ? stdout_bg : bg;
       break;
     case STDERR_FILENO:
-      stderr_fg = _fg = fg == DYE_CURRENT ? stderr_fg : fg;
-      stderr_bg = _bg = bg == DYE_CURRENT ? stderr_bg : bg;
+      stderr_fg = fg = fg == DYE_CURRENT ? stderr_fg : fg;
+      stderr_bg = bg = bg == DYE_CURRENT ? stderr_bg : bg;
       break;
     default:
       return false;
   }
 
-  return fprintf(tty, "\x1B[0;%u;%um", ansi_fg_color[_fg + 1], ansi_bg_color[_bg + 1]) > 0;
+  return fprintf(tty, "\x1B[0;%u;%um", ansi_fg_color[fg + 1], ansi_bg_color[bg + 1]) > 0;
 #endif // DYE_POSIX
 }
 
