@@ -22,5 +22,8 @@ end_of_line = lf
 indent_size = 4
 indent_style = tab
 
+[*.nmake]
+end_of_line = crlf
+
 [*.{markdown,md}]
 trim_trailing_whitespace = false
