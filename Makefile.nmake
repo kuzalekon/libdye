@@ -1,12 +1,12 @@
 
 TARGET = dye
 
-SRCDIR = ./src
-OUTDIR = ./out
+SRCDIR = .\src
+OUTDIR = .\out
 
-SRC = $(SRCDIR)/dye.c
-OBJ = $(OUTDIR)/dye.o
-LIB = $(OUTDIR)/dye.lib
+SRC = $(SRCDIR)\dye.c
+OBJ = $(OUTDIR)\dye.o
+LIB = $(OUTDIR)\dye.lib
 
 CC = cl.exe
 # Default compile flags
@@ -18,7 +18,7 @@ AR = lib.exe
 ARFLAGS = /nologo
 
 RM = -del
-RMFLAGS =
+RMFLAGS = /F /Q
 
 MD = -mkdir
 MDFLAGS =
