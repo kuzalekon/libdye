@@ -1,0 +1,7 @@
+language: c
+compiler: gcc
+os: linux
+script:
+  - export CC=gcc
+  - export CXX=g++
+  - make
