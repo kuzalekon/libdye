@@ -27,12 +27,12 @@ all: release debug
 release:
 	$(MD) $(MDFLAGS) $(RELEASE_DIR) 1>nul 2>nul
 	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(RELEASE_DIR)\\" /Fd"$(RELEASE_DIR)\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
-	$(LM) $(LMFLAGS) /out:"$(RELEASE_DIR)\$(TARGET).lib" "$(RELEASE_DIR)\dye.obj"
+	$(LM) $(LMFLAGS) /out:"$(RELEASE_DIR)\$(TARGET).lib" $(ULMFLAGS) "$(RELEASE_DIR)\dye.obj"
 
 debug:
 	$(MD) $(MDFLAGS) $(DEBUG_DIR) 1>nul 2>nul
 	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(DEBUG_DIR)\\" /Fd"$(DEBUG_DIR)\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
-	$(LM) $(LMFLAGS) /out:"$(DEBUG_DIR)\$(TARGET).lib" "$(DEBUG_DIR)\dye.obj"
+	$(LM) $(LMFLAGS) /out:"$(DEBUG_DIR)\$(TARGET).lib" $(ULMFLAGS) "$(DEBUG_DIR)\dye.obj"
 
 clean:
 	$(RD) $(RDFLAGS) $(BUILD_DIR) 1>nul 2>nul
