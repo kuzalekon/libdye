@@ -23,12 +23,12 @@ all: release debug
 
 release:
 	$(MD) $(MDFLAGS) "$(BUILD_DIR)\$@" 1>nul 2>nul
-	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
+	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UCCFLAGS) $(SOURCES)
 	$(LM) $(LMFLAGS) /out:"$(BUILD_DIR)\$@\$(TARGET).lib" $(ULMFLAGS) "$(BUILD_DIR)\$@\dye.obj"
 
 debug:
 	$(MD) $(MDFLAGS) "$(BUILD_DIR)\$@" 1>nul 2>nul
-	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
+	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UCCFLAGS) $(SOURCES)
 	$(LM) $(LMFLAGS) /out:"$(BUILD_DIR)\$@\$(TARGET).lib" $(ULMFLAGS) "$(BUILD_DIR)\$@\dye.obj"
 
 clean:
