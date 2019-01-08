@@ -1,0 +1,37 @@
+<svg width="830" height="232" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="234" width="832" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="null" id="svg_1" fill="#3A5569" d="m116.16699,2c-17.489388,0 -34.007295,3.886379 -48.581785,10.688111c13.603009,7.773213 22.347703,22.347703 22.347703,39.351123c0,25.262601 -20.404286,45.666887 -45.666887,45.666887c-15.060458,0 -28.177499,-7.287245 -36.436225,-17.975356c-3.886379,11.659592 -5.829796,23.805152 -5.829796,36.436225c0,63.156275 51.010715,114.16699 114.16699,114.16699s114.16699,-51.010715 114.16699,-114.16699s-51.011171,-114.16699 -114.16699,-114.16699z"/>
+  <g id="svg_6"/>
+  <g id="svg_7"/>
+  <g id="svg_8"/>
+  <g id="svg_9"/>
+  <g id="svg_10"/>
+  <g id="svg_11"/>
+  <g id="svg_12"/>
+  <g id="svg_13"/>
+  <g id="svg_14"/>
+  <g id="svg_15"/>
+  <g id="svg_16"/>
+  <g id="svg_17"/>
+  <g id="svg_18"/>
+  <g id="svg_19"/>
+  <g id="svg_20"/>
+  <g stroke="null" id="svg_22">
+   <circle stroke="null" id="svg_2" fill="#FEC656" r="21.883457" cy="172.34753" cx="91.74947"/>
+   <circle stroke="null" id="svg_3" fill="#F16D6E" r="19.358463" cy="186.235027" cx="145.195425"/>
+   <circle stroke="null" id="svg_4" fill="#60C3AB" r="26.09152" cy="140.785036" cx="185.174453"/>
+   <circle stroke="null" id="svg_5" fill="#EDB997" r="18.095957" cy="84.828964" cx="176.757919"/>
+  </g>
+  <text xml:space="preserve" text-anchor="start" font-family="'Times New Roman', Times, serif" font-size="24" id="svg_24" y="80.104004" x="475.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="null" fill="#000000"/>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="162" id="svg_25" y="176.176758" x="252.5" stroke-width="99" stroke="null" fill="#EDB997">LIB</text>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="162" id="svg_26" y="176.176758" x="726.5" stroke-width="99" stroke="null" fill="#FEC656">E</text>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="162" id="svg_27" y="176.176758" x="506.5" stroke-width="99" stroke="null" fill="#60C3AB">D</text>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="162" id="svg_28" y="176.176758" x="616.5" stroke-width="99" stroke="null" fill="#F16D6E">Y</text>
+ </g>
+</svg>
