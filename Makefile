@@ -4,8 +4,6 @@ TARGET ?= dye
 INCLUDE_DIR := ./include
 SOURCE_DIR  := ./src
 BUILD_DIR   := ./build
-RELEASE_DIR := $(BUILD_DIR)/release
-DEBUG_DIR   := $(BUILD_DIR)/debug
 
 SOURCES := $(SOURCE_DIR)/dye.c
 
