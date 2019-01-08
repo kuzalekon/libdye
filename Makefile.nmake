@@ -1,40 +1,38 @@
 
+
 TARGET = dye
 
-SRCDIR = .\src
-OUTDIR = .\out
+INCLUDE_DIR = .\include
+SOURCE_DIR  = .\src
+BUILD_DIR   = .\build
+RELEASE_DIR = $(BUILD_DIR)\release
+DEBUG_DIR   = $(BUILD_DIR)\debug
 
-SRC = $(SRCDIR)\dye.c
-OBJ = $(OUTDIR)\dye.o
-LIB = $(OUTDIR)\dye.lib
+SOURCES = $(SOURCE_DIR)\dye.c
 
-CC = cl.exe
-# Default compile flags
-CFLAGS = /nologo /utf-8 /W4 /EHsc /c /Fo$(OBJ)
-# Default compile macroses
-DFLAGS = /DNDEBUG
+CC      = cl.exe
+CCFLAGS = /nologo /c /I"$(INCLUDE_DIR)" /D"WIN32" /D"UNICODE" /D"_UNICODE" /analyze- /fp:precise /W4 /WX- /Zc:wchar_t /Zc:inline /Zc:forScope /GS /Gm- /Oy- /TP /UTF-8 /EHsc
 
-AR = lib.exe
-ARFLAGS = /nologo
+LM      = lib.exe
+LMFLAGS = /nologo
 
-RM = -del
-RMFLAGS = /F /Q
-
-MD = -mkdir
+MD      = -mkdir
 MDFLAGS =
 
-.PHONY: all
-all: build
+RD      = -rmdir
+RDFLAGS = /Q /S
 
-.PHONY: build
-build:
-	$(MD) $(MDFLAGS) "$(OUTDIR)" 1>nul 2>nul
-	$(CC) $(CFLAGS) $(DFLAGS) $(SRC)
-	$(AR) $(ARFLAGS) $(OBJ)
+all: release debug
 
-.PHONY: rebuild
-rebuild: clean build
+release:
+	$(MD) $(MDFLAGS) $(RELEASE_DIR) 1>nul 2>nul
+	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(RELEASE_DIR)\\" /Fd"$(RELEASE_DIR)\$(TARGET).pdb" $(SOURCES)
+	$(LM) $(LMFLAGS) /out:"$(RELEASE_DIR)\$(TARGET).lib" "$(RELEASE_DIR)\dye.obj"
 
-.PHONY: clean
+debug:
+	$(MD) $(MDFLAGS) $(DEBUG_DIR) 1>nul 2>nul
+	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(DEBUG_DIR)\\" /Fd"$(DEBUG_DIR)\$(TARGET).pdb" $(SOURCES)
+	$(LM) $(LMFLAGS) /out:"$(DEBUG_DIR)\$(TARGET).lib" "$(DEBUG_DIR)\dye.obj"
+
 clean:
-	$(RM) $(RMFLAGS) "$(OBJ)"
+	$(RD) $(RDFLAGS) $(BUILD_DIR) 1>nul 2>nul
