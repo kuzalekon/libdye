@@ -4,8 +4,6 @@ TARGET = dye
 INCLUDE_DIR = .\include
 SOURCE_DIR  = .\src
 BUILD_DIR   = .\build
-RELEASE_DIR = $(BUILD_DIR)\release
-DEBUG_DIR   = $(BUILD_DIR)\debug
 
 SOURCES = $(SOURCE_DIR)\dye.c
 
@@ -24,14 +22,14 @@ RDFLAGS = /Q /S
 all: release debug
 
 release:
-	$(MD) $(MDFLAGS) $(RELEASE_DIR) 1>nul 2>nul
-	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(RELEASE_DIR)\\" /Fd"$(RELEASE_DIR)\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
-	$(LM) $(LMFLAGS) /out:"$(RELEASE_DIR)\$(TARGET).lib" $(ULMFLAGS) "$(RELEASE_DIR)\dye.obj"
+	$(MD) $(MDFLAGS) "$(BUILD_DIR)\$@" 1>nul 2>nul
+	$(CC) $(CCFLAGS) /D"NDEBUG" /Zi /Gy /Gd /MD /O2 /Oi /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
+	$(LM) $(LMFLAGS) /out:"$(BUILD_DIR)\$@\$(TARGET).lib" $(ULMFLAGS) "$(BUILD_DIR)\$@\dye.obj"
 
 debug:
-	$(MD) $(MDFLAGS) $(DEBUG_DIR) 1>nul 2>nul
-	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(DEBUG_DIR)\\" /Fd"$(DEBUG_DIR)\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
-	$(LM) $(LMFLAGS) /out:"$(DEBUG_DIR)\$(TARGET).lib" $(ULMFLAGS) "$(DEBUG_DIR)\dye.obj"
+	$(MD) $(MDFLAGS) "$(BUILD_DIR)\$@" 1>nul 2>nul
+	$(CC) $(CCFLAGS) /D"DEBUG" /D"_DEBUG" /ZI /JMC /Gd /MDd /Od /TP /Fo"$(BUILD_DIR)\$@\\" /Fd"$(BUILD_DIR)\$@\$(TARGET).pdb" $(UFLAGS) $(SOURCES)
+	$(LM) $(LMFLAGS) /out:"$(BUILD_DIR)\$@\$(TARGET).lib" $(ULMFLAGS) "$(BUILD_DIR)\$@\dye.obj"
 
 clean:
 	$(RD) $(RDFLAGS) $(BUILD_DIR) 1>nul 2>nul
