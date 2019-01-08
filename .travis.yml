@@ -13,8 +13,7 @@ matrix:
           packages:
             - gcc-4.9
       env:
-        - CC='gcc-4.9'
-        - CXX='g++-4.9'
+        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
     - os: linux
       addons:
@@ -24,8 +23,7 @@ matrix:
           packages:
             - gcc-5
       env:
-        - CC='gcc-5'
-        - CXX='g++-5'
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
 
     - os: linux
       addons:
@@ -35,8 +33,7 @@ matrix:
           packages:
             - gcc-6
       env:
-        - CC='gcc-6'
-        - CXX='g++-6'
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
     - os: linux
       addons:
@@ -46,8 +43,7 @@ matrix:
           packages:
             - gcc-7
       env:
-        - CC='gcc-7'
-        - CXX='g++-7'
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
     - os: linux
       addons:
@@ -58,8 +54,7 @@ matrix:
           packages:
             - clang-3.6
       env:
-        - CC='clang-3.6'
-        - CXX='clang++-3.6'
+        - MATRIX_EVAL="CC=clang-3.6 && CXX=clang++-3.6"
 
     - os: linux
       addons:
@@ -70,8 +65,7 @@ matrix:
           packages:
             - clang-3.7
       env:
-        - CC='clang-3.7'
-        - CXX='clang++-3.7'
+        - MATRIX_EVAL="CC=clang-3.7 && CXX=clang++-3.7"
 
     - os: linux
       addons:
@@ -82,20 +76,10 @@ matrix:
           packages:
             - clang-3.8
       env:
-        - CC='clang-3.8'
-        - CXX='clang++-3.8'
+        - MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
 
-    - os: osx
-      compiler: clang
-      env:
-        - CC='clang'
-        - CXX='clang++'
-
-    - os: osx
-      compiler: gcc
-      env:
-        - CC='gcc'
-        - CXX='g++'
+before_install:
+  - eval "${MATRIX_EVAL}"
 
 script:
     - make
