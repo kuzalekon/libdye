@@ -1,40 +1,41 @@
 
 TARGET ?= dye
 
-SRCDIR := ./src
-OUTDIR := ./out
+INCLUDE_DIR := ./include
+SOURCE_DIR  := ./src
+BUILD_DIR   := ./build
+RELEASE_DIR := $(BUILD_DIR)/release
+DEBUG_DIR   := $(BUILD_DIR)/debug
 
-SRC := $(SRCDIR)/dye.c
-OBJ := $(OUTDIR)/dye.o
-LIB := $(OUTDIR)/lib$(TARGET).a
+SOURCES := $(SOURCE_DIR)/dye.c
 
-CC ?= gcc
-# Default compile flags
-CFLAGS ?= -Wall -Wextra -O3 -static -std=gnu99 -c -o $(OBJ)
-# Default compile macroses
-DFLAGS ?= -DNDEBUG
+CC      ?= gcc
+CCFLAGS := -c -I"$(INCLUDE_DIR)" -Wall -Wextra -static -std=gnu99
 
-AR := ar
+AR      := ar
 ARFLAGS := rcs
 
-RM := rm
-RMFLAGS := -f
-
-MD := mkdir
+MD      := mkdir
 MDFLAGS := -p
 
+RM      := rm
+RMFLAGS := -rf
+
 .PHONY: all
-all: build clean
+all: release debug
 
-.PHONY: build
-build:
-	$(MD) $(MDFLAGS) $(OUTDIR)
-	$(CC) $(CFLAGS) $(DFLAGS) $(SRC)
-	$(AR) $(ARFLAGS) $(LIB) $(OBJ)
+.PHONY: release
+release:
+	$(MD) $(MDFLAGS) "$(BUILD_DIR)/$@"
+	$(CC) $(CCFLAGS) -D"NDEBUG" -O3 -o "$(BUILD_DIR)/$@/dye.o" $(UCCFLAGS) $(SOURCES)
+	$(AR) $(ARFLAGS) $(UARFLAGS) "$(BUILD_DIR)/$@/lib$(TARGET).a" "$(BUILD_DIR)/$@/dye.o"
 
-.PHONY: rebuild
-rebuild: clean build
+.PHONY: debug
+debug:
+	$(MD) $(MDFLAGS) "$(BUILD_DIR)/$@"
+	$(CC) $(CCFLAGS) -D"DEBUG" -D"_DEBUG" -g -Og -o "$(BUILD_DIR)/$@/dye.o" $(UCCFLAGS) $(SOURCES)
+	$(AR) $(ARFLAGS) $(UARFLAGS) "$(BUILD_DIR)/$@/lib$(TARGET).a" "$(BUILD_DIR)/$@/dye.o"
 
 .PHONY: clean
 clean:
-	$(RM) $(RMFLAGS) $(OBJ)
+	$(RM) $(RMFLAGS) $(BUILD_DIR)
