@@ -45,7 +45,7 @@ $ make
 ```
 
 On Windows run:
-```bat
+```bash
 $ nmake -f Makefile.nmake
 ```
 
