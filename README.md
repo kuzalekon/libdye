@@ -1,5 +1,9 @@
 <p align="center"><img width="350" src="img/logo.svg" alt="LIBDYE" /></p>
 <hr>
+<p align="center">
+  <img width="120" height="27" src="https://travis-ci.org/kalexey89/libdye.svg?branch=master" alt="Travis-CI Build Status" />
+  <img width="140" height="27" src="https://ci.appveyor.com/api/projects/status/6wb4bawws8g746yi/branch/master?svg=true" alt="AppVeyor Build Status" />
+</p>
 
 This is a small cross-platform static C library to bring colors in the console. In posix-compatible systems, it uses [ANSI color formatting](https://en.wikipedia.org/wiki/ANSI_escape_code) and [Console API](https://docs.microsoft.com/en-us/windows/console/console-functions) in Windows.
 
