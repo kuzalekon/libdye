@@ -2,7 +2,7 @@
 <p align="center"><img width="350" src="img/logo.svg" alt="LIBDYE" /></p>
 <hr>
 
-This is a small cross-platform static C library for displaying colored text in the console. In posix-compatible systems, it uses ANSI color formatting and Console API in Windows.
+This is a small cross-platform static C library to bring colors in the console. In posix-compatible systems, it uses ANSI color formatting and Console API in Windows.
 
 ### How to use
 
