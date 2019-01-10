@@ -9,11 +9,6 @@ compiler:
   - clang
 script:
   - make all
-deploy:
-  - provider: releases
-    skip_cleanup: true
-    api_key:
-      secure: "etKzENZnSmqUKUNc5zSfkoG3NYPt4Oh1Di37uKhj1oyIEB/FCJE3v0z526qZoPsyuI+6+yaRAXuoQkX+PeeGqfFIGyQifjK3M4GykAao0TT7qsfOtxSlJLoLaqffblu5nxvorLLM7Au9xBW/+ObLPkpNPZzj7knQ6DsMAsOmc5ZdH3HOmkH7tRdCKIAe/7Ib65FqZLOMIe0kzveoNR7oNfH4BV1KYQYAKUM8Is2qPnvYQFSQmx79XbRDEGHVI0LwcOzlb+VHubxUzOrozX9MkXDlqwPjRBQgL8aIWcWFF6ZW9qNCGFJSoW9PISkpJvU/Iqi9KpD0JLEebDuEQJn+70rkHHThO/ClO16YbjqO4OrZNznilrbG6E090lVKf00Zinq81Ktb+vjJNy4ry96KasLN5rhEY2od4Tl/K0m7i8LDDktwq2kIi4YnACDeiAbKQxFIYsc8YwaOeJ9tXeVdRtLIVjLx1Uy8Rj2/uRRaGALftZq1F4MQKHOqUSjg7v+LxJ789KnwpXaLf8EKAMA/jIRDWJh+0CPM8Os2Z1UpfPj42H/gqfQYV6oqzH3rMYcA4gSaoWoEsn27/3b8V6JXqvTWek/mZHnv1+Z2Uatsry3uRoLVWn5JbuIB9HiNoBPSqS+dq+mD63oZDGn1Jsw4YR8FeYlo+7zsvDAVutntJ/4="
-    on:
-      branch: master
-      tags: true
+
+    #api_key:
+      #secure: "etKzENZnSmqUKUNc5zSfkoG3NYPt4Oh1Di37uKhj1oyIEB/FCJE3v0z526qZoPsyuI+6+yaRAXuoQkX+PeeGqfFIGyQifjK3M4GykAao0TT7qsfOtxSlJLoLaqffblu5nxvorLLM7Au9xBW/+ObLPkpNPZzj7knQ6DsMAsOmc5ZdH3HOmkH7tRdCKIAe/7Ib65FqZLOMIe0kzveoNR7oNfH4BV1KYQYAKUM8Is2qPnvYQFSQmx79XbRDEGHVI0LwcOzlb+VHubxUzOrozX9MkXDlqwPjRBQgL8aIWcWFF6ZW9qNCGFJSoW9PISkpJvU/Iqi9KpD0JLEebDuEQJn+70rkHHThO/ClO16YbjqO4OrZNznilrbG6E090lVKf00Zinq81Ktb+vjJNy4ry96KasLN5rhEY2od4Tl/K0m7i8LDDktwq2kIi4YnACDeiAbKQxFIYsc8YwaOeJ9tXeVdRtLIVjLx1Uy8Rj2/uRRaGALftZq1F4MQKHOqUSjg7v+LxJ789KnwpXaLf8EKAMA/jIRDWJh+0CPM8Os2Z1UpfPj42H/gqfQYV6oqzH3rMYcA4gSaoWoEsn27/3b8V6JXqvTWek/mZHnv1+Z2Uatsry3uRoLVWn5JbuIB9HiNoBPSqS+dq+mD63oZDGn1Jsw4YR8FeYlo+7zsvDAVutntJ/4="
