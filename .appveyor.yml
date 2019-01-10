@@ -1,4 +1,4 @@
-version: {build}
+version: "{build}"
 image: Visual Studio 15
 init:
   - git config --global core.autocrlf input
