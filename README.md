@@ -1,8 +1,7 @@
-<br>
 <p align="center"><img width="350" src="img/logo.svg" alt="LIBDYE" /></p>
 <hr>
 
-This is a small cross-platform static C library to bring colors in the console. In posix-compatible systems, it uses ANSI color formatting and Console API in Windows.
+This is a small cross-platform static C library to bring colors in the console. In posix-compatible systems, it uses [ANSI color formatting](https://en.wikipedia.org/wiki/ANSI_escape_code) and [Console API](https://docs.microsoft.com/en-us/windows/console/console-functions) in Windows.
 
 ### How to use
 
@@ -39,12 +38,12 @@ int main(int argc, char** argv)
 
 Library depends only on [C standart library](https://en.wikipedia.org/wiki/C_standard_library), `unistd.h` header on Unix, `windows.h` and `io.h` on Windows.
 
-On Unix run:
+On `Unix` run:
 ```bash
 $ make
 ```
 
-On Windows run:
+On `Windows` run:
 ```bash
 $ nmake -f Makefile.nmake
 ```
@@ -55,7 +54,6 @@ As a result, the `release` and `debug` versions of the library will be created i
 
 | Color         | Code |
 | ------------- | ---- |
-| DYE_CURRENT   | -2   |
 | DYE_RESET     | -1   |
 | DYE_BLACK     | 0    |
 | DYE_NAVYBLUE  | 1    |
