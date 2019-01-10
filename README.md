@@ -53,7 +53,7 @@ As a result, the `release` and `debug` versions of the library will be created i
 ### Color pallete
 
 | Color         | Code |
-| ------------- | ---- |
+| ------------- | :--: |
 | DYE_RESET     | -1   |
 | DYE_BLACK     | 0    |
 | DYE_NAVYBLUE  | 1    |
