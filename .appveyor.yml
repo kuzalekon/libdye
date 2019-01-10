@@ -1,11 +1,12 @@
 version: "{build}"
-image: Visual Studio 15
+image:
+  - Visual Studio 2015
 init:
   - git config --global core.autocrlf input
 max_jobs: 2
 clone_depth: 5
 build_script:
-- cmd: >-
+  - cmd: >-
     call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
     nmake -f Makefile.nmake
     call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
