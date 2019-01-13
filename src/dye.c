@@ -1,4 +1,10 @@
 
+/**
+ * @file    dye.c
+ * @brief   Implementation of libdye functions
+ * @author  Aleksey Kuznetsov (kalexey89)
+ */
+
 #include "dye.h"
 
 #if defined WIN32 || defined _WIN32 || defined _WIN64
