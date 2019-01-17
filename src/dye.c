@@ -153,10 +153,10 @@ bool dye(dye_tty_t tty, dye_color_t fg, dye_color_t bg)
       return false;
   }
 
-  if (fprintf(tty, "\x1B[0;%u;%um", ansi_fg_color[fg + 1], ansi_bg_color[bg + 1]) == 0)
+  if (fprintf(tty, "\x1B[0;%u;%um", ansi_fg_color[fg + 1], ansi_bg_color[bg + 1]) > 0)
     return false;
 
-  if (fflush(tty) == 0)
+  if (fflush(tty) != 0)
     return false;
 
   return true;
