@@ -90,7 +90,7 @@ bool dye(dye_tty_t tty, dye_color_t fg, dye_color_t bg)
       return false;
   }
 
-  return (bool) SetConsoleTextAttribute(tty_handle, tty_attrs);
+  return SetConsoleTextAttribute(tty_handle, tty_attrs) > 0;
 // DYE_WIN32
 #elif defined DYE_POSIX
   static dye_color_t stdout_fg = DYE_RESET;
