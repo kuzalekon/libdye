@@ -1,4 +1,6 @@
 remote_theme: pages-themes/slate@v0.2.0
+title: LIBDYE
+description: A small static C library to bring colors in the console
 show_downloads: true
 
 plugins:
